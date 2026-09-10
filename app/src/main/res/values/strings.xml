@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">智音助手 (C3)</string>
+    <string name="companion_name">语音通知中心 (P3)</string>
+    <string name="watermark_default">学号: 20230001 | 姓名: 张同学</string>
+</resources>

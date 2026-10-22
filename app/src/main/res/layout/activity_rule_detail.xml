@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvDetailHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="规则详情与自定义配置"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="1. 规则名称"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etRuleTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如：睡前阅读提醒规则" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="2. 正则匹配表达式 (Regex Pattern)"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etRuleRegex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如：.*(提醒我|叫我)(.*)" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="3. 绑定意图类型 (CREATE_REMINDER / SYSTEM_CONTROL / CUSTOM_REPLY)"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etRuleIntent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CREATE_REMINDER" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="4. 语音响应模板 (支持 {time}, {content}, {target} 槽位变量)"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etRuleResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="已为您设定【{time}】的提醒：{content}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="5. 规则匹配优先级 (1~100)"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etRulePriority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="85" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnSaveRule"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="保存规则" />
+
+            <Button
+                android:id="@+id/btnDeleteRule"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/danger"
+                android:text="删除规则" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

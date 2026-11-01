@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 设备能力：麦克风语音识别 + Android 13+ 通知栏交互权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@android:drawable/ic_btn_speak_now"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.VoiceIntelligence">
+
+        <!-- 入口 1：主 App (C3 智能语音助手) -->
+        <activity
+            android:name=".ui.chat.VoiceChatActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 入口 2：伴生模块独立桌面入口 (P3 通知提醒中心，满足“可独立启动、读写主App数据”要求) -->
+        <activity
+            android:name=".companion.ui.ReminderCenterActivity"
+            android:exported="true"
+            android:icon="@android:drawable/ic_lock_idle_alarm"
+            android:label="@string/companion_name"
+            android:taskAffinity="com.zty.voiceintelligence.companion">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 界面 2 & 3：指令规则列表 -> 规则详情编辑 -->
+        <activity
+            android:name=".ui.rules.RuleListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.rules.RuleDetailActivity"
+            android:exported="false" />
+
+        <!-- 界面 5：引擎统计看板 -->
+        <activity
+            android:name=".ui.stats.EngineStatsActivity"
+            android:exported="false" />
+
+        <!-- P3 伴生模块：通知栏直接操作广播接收器（一键完成 / 延后5分钟） -->
+        <receiver
+            android:name=".companion.NotificationActionReceiver"
+            android:exported="false" />
+
+    </application>
+</manifest>

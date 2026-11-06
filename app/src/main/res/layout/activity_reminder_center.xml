@@ -3,46 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="@color/bg_light">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0369A1"
-        android:orientation="vertical"
-        android:padding="12dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="P3 伴生模块：通知提醒中心"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnTestInstantNotify"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:text="5秒后触发测试通知"
-                android:textSize="12sp" />
-        </LinearLayout>
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="10dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/watermark_default"
-            android:textColor="#BAE6FD"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="P3 通知提醒中心"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnTestInstantNotify"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_marginStart="6dp"
+            android:text="5秒测试通知"
             android:textSize="12sp" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0369A1"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="8dp"
+        android:text="@string/watermark_default"
+        android:textColor="#BAE6FD"
+        android:textSize="11sp" />
 
     <!-- 伴生模块独立快速新增提醒栏 -->
     <LinearLayout
@@ -57,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="伴生模块直接新建提醒 (10秒后触发通知)"
+            android:hint="新建提醒（10秒后触发）"
             android:textSize="14sp" />
 
         <Button

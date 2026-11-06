@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="@color/bg_light">
 
     <!-- 顶部导航栏 + 录屏水印横幅（满足3分钟录屏带本人学号+姓名水印要求） -->
@@ -13,47 +14,52 @@
         android:orientation="vertical"
         android:padding="12dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="智音助手 C3 · 自定义指令解析引擎"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="智音助手 C3 (自定义指令引擎)"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnOpenRules"
                 style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:text="规则库"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="指令规则库"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btnOpenCompanion"
                 style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
                 android:layout_marginStart="6dp"
-                android:text="提醒中心(P3)"
+                android:layout_weight="1"
+                android:text="提醒中心 (P3)"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btnOpenStats"
                 style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
                 android:layout_marginStart="6dp"
-                android:text="统计"
+                android:layout_weight="1"
+                android:text="引擎统计"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
         </LinearLayout>

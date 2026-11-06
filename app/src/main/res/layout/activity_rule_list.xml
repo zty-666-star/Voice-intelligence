@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="@color/bg_light">
 
     <LinearLayout
@@ -11,31 +12,36 @@
         android:background="@color/primary"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="12dp">
+        android:padding="10dp">
 
         <Button
             android:id="@+id/btnBackFromRules"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="34dp"
+            android:minWidth="56dp"
             android:text="返回"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="自定义指令规则库 (列表→详情)"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="指令规则库"
             android:textColor="#FFFFFF"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnAddRule"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:text="+ 新增规则" />
+            android:layout_height="34dp"
+            android:text="+ 新增"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <FrameLayout

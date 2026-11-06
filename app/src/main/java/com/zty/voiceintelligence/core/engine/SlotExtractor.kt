@@ -12,11 +12,11 @@ import java.util.regex.Pattern
 object SlotExtractor {
 
     private val RELATIVE_TIME_REGEX = Pattern.compile(
-        "([零一二两三四五六七八九十百\d]+|半)(个)?(小时|分钟|分|秒|天)后?"
+        """([零一二两三四五六七八九十百\d]+|半)(个)?(小时|分钟|分|秒|天)后?"""
     )
 
     private val ABSOLUTE_TIME_REGEX = Pattern.compile(
-        "(今天|明天|后天)?(早上|上午|中午|下午|晚上|今晚|明早)?([零一二两三四五六七八九十\d]{1,3})[点时](半|([零一二三四五六七八九十\d]{1,3})分?)?"
+        """(今天|明天|后天)?(早上|上午|中午|下午|晚上|今晚|明早)?([零一二两三四五六七八九十\d]{1,3})[点时](半|([零一二三四五六七八九十\d]{1,3})分?)?"""
     )
 
     private val DEVICE_CONTROL_REGEX = Pattern.compile(
@@ -24,7 +24,7 @@ object SlotExtractor {
     )
 
     private val MATH_REGEX = Pattern.compile(
-        "(\d+(?:\.\d+)?)\s*([+\-*/×÷加减乘除])\s*(\d+(?:\.\d+)?)"
+        """(\d+(?:\.\d+)?)\s*([+\-*/×÷加减乘除])\s*(\d+(?:\.\d+)?)"""
     )
 
     /**
@@ -158,7 +158,8 @@ object SlotExtractor {
         return when (unit) {
             "小时" -> n * 60
             "天" -> n * 1440
-            "秒" -> 1
+            // 秒级指令不足一分钟，精确触发时间由 resolveTriggerTimestamp 按毫秒计算
+            "秒" -> 0
             else -> n
         }
     }

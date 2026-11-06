@@ -39,8 +39,10 @@ data class ParseResult(
     val replyMessage: String
 ) {
     fun formatSlotsBadge(): String {
-        if (slots.isEmpty()) return "意图: ${intent.displayName} (无槽位)"
-        val pairs = slots.entries.joinToString(" | ") { "${it.key.label}=${it.value}" }
+        // 延迟分钟是内部调度用的中间量，真实调度基于精确时间戳，避免和"10秒后"这类秒级指令显示冲突
+        val visibleSlots = slots.filterKeys { it != SlotKey.DELAY_MINUTES }
+        if (visibleSlots.isEmpty()) return "意图: ${intent.displayName} (无槽位)"
+        val pairs = visibleSlots.entries.joinToString(" | ") { "${it.key.label}=${it.value}" }
         return "意图: ${intent.displayName} | $pairs"
     }
 }

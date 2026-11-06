@@ -136,9 +136,13 @@ class VoiceChatActivity : AppCompatActivity() {
     }
 
     private fun sendCommand(text: String) {
-        viewModel.processUserCommand(text) { reply ->
-            ttsHelper?.speak(reply)
-        }
+        viewModel.processUserCommand(
+            rawText = text,
+            onSpeakReply = { reply -> ttsHelper?.speak(reply) },
+            onOpenReminderCenter = {
+                startActivity(Intent(this, ReminderCenterActivity::class.java))
+            }
+        )
     }
 
     private fun observeData() {

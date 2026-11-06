@@ -44,7 +44,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                         val rawCmd = intent.getStringExtra(ReminderWorker.KEY_RAW_CMD) ?: ""
                         val data = Data.Builder()
                             .putLong(ReminderWorker.KEY_REMINDER_ID, reminderId)
-                            .putString(ReminderWorker.KEY_TITLE, "$title (已延后)")
+                            .putString(ReminderWorker.KEY_TITLE, title)
                             .putString(ReminderWorker.KEY_RAW_CMD, rawCmd)
                             .build()
                         val req = OneTimeWorkRequestBuilder<ReminderWorker>()

@@ -47,7 +47,11 @@ class ReminderCenterActivity : AppCompatActivity() {
 
             override fun onBindViewHolder(holder: ReminderHolder, position: Int) {
                 val item = reminders[position]
-                val statusTag = if (item.isCompleted) "[已完成] " else "[待触发] "
+                val statusTag = when {
+                    item.isCompleted -> "[已完成] "
+                    item.triggerTimeMillis <= System.currentTimeMillis() -> "[已提醒] "
+                    else -> "[待触发] "
+                }
                 holder.binding.tvReminderTitle.text = "$statusTag${item.title}"
                 holder.binding.tvReminderMeta.text =
                     "计划时间: ${dateFormat.format(Date(item.triggerTimeMillis))} | 来源: ${item.source} | 延后: ${item.snoozeCount}次"

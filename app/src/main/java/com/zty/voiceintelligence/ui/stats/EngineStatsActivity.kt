@@ -3,6 +3,8 @@ package com.zty.voiceintelligence.ui.stats
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -24,6 +26,14 @@ class EngineStatsActivity : AppCompatActivity() {
         binding = ActivityEngineStatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         repository = VoiceRepository(this)
+
+        // 全面屏下补状态栏留白，避免标题被状态栏遮挡
+        val basePadding = (16 * resources.displayMetrics.density).toInt()
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val topInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
+            view.setPadding(view.paddingLeft, basePadding + topInset, view.paddingRight, view.paddingBottom)
+            insets
+        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
